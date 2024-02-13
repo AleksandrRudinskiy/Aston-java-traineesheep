@@ -1,5 +1,3 @@
-
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
 
@@ -13,20 +11,15 @@ public class HandMadeArrayListTest {
         HandMadeArrayList<Integer> list = new HandMadeArrayList<>();
         list.add(1);
         list.add(25);
-
         assertEquals(2, list.size());
         assertEquals(25, list.get(1));
-
     }
 
     @Test
     void addStringTest() {
         HandMadeArrayList<String> list = new HandMadeArrayList<>();
-
         list.add("qdqwdqw");
-
         assertEquals(1, list.size());
-
         assertEquals("qdqwdqw", list.get(0));
     }
 
@@ -65,17 +58,34 @@ public class HandMadeArrayListTest {
         list.add(25);
         list.add(100);
 
-        int  index = 5;
+        int index = 5;
         final ArrayIndexOutOfBoundsException exception = assertThrows(
                 ArrayIndexOutOfBoundsException.class,
                 new Executable() {
                     @Override
                     public void execute() {
 
-                       list.get(index);
+                        list.get(index);
                     }
                 });
         assertEquals("Element with index " + index + " does not exist", exception.getMessage());
+    }
+
+
+    @Test
+    void addBigIntLengthList() {
+
+        int[] array = new int[50_000_000];
+        HandMadeArrayList<Integer> list = new HandMadeArrayList<>();
+
+        for (int i : array) {
+            array[i] = i;
+            list.add(i);
+        }
+
+        assertEquals(50_000_000, list.size());
+
+
     }
 
 
