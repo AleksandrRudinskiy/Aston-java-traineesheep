@@ -58,5 +58,20 @@ public class HandMadeArrayList<T> {
         elements[--size] = null;
     }
 
+    public void add(int index, Object element) {
+        if (index > size || index < 0)
+            throw new IndexOutOfBoundsException("Элемента с интексом " + index + " нет.");
+        System.arraycopy(elements, index, elements, index + 1,
+                size - index);
+        elements[index] = element;
+        size++;
+    }
+
+    public void clear() {
+        for (int i = 0; i < size; i++)
+            elements[i] = null;
+        size = 0;
+    }
+
 
 }

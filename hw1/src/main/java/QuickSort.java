@@ -1,8 +1,8 @@
 import java.util.Comparator;
 import java.util.Stack;
 
-public class QuickSort<T> {
-    private Comparator comparator;
+public class QuickSort<T> implements Comparable {
+    private final Comparator<T> comparator;
     private T[] arr;
     int l;
     int h;
@@ -58,5 +58,10 @@ public class QuickSort<T> {
         arr[i] = arr[high];
         arr[high] = temp;
         return i;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return 0;
     }
 }
