@@ -1,3 +1,5 @@
+package list;
+
 public class HandMadeArrayList<T> {
     private int size = 0;
     private Object[] elements;

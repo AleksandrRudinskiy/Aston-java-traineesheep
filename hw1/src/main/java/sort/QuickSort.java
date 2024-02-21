@@ -1,7 +1,9 @@
+package sort;
+
 import java.util.Comparator;
 import java.util.Stack;
 
-public class QuickSort<T> {
+public class QuickSort<T> implements Sort {
     private final Comparator<T> comparator;
     private final T[] arr;
 
@@ -17,6 +19,7 @@ public class QuickSort<T> {
         resaltArr = new Object[arr.length];
     }
 
+    @Override
     public Object[] sort() {
         Stack<Integer> stack = new Stack<>();
         stack.push(l);
