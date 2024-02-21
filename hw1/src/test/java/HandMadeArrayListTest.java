@@ -73,7 +73,7 @@ public class HandMadeArrayListTest {
     }
 
     @Test
-    void addBigIntLengthList() {
+    void addBigLengthList() {
         int[] array = new int[80_000_000];
         HandMadeArrayList<Integer> list = new HandMadeArrayList<>();
         for (int i : array) {

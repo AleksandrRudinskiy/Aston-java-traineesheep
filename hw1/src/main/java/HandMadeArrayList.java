@@ -72,6 +72,4 @@ public class HandMadeArrayList<T> {
             elements[i] = null;
         size = 0;
     }
-
-
 }
