@@ -17,7 +17,7 @@ public class QuickSort<T> {
         resaltArr = new Object[arr.length];
     }
 
-    public Object[] quickSort() {
+    public Object[] sort() {
         Stack<Integer> stack = new Stack<>();
         stack.push(l);
         stack.push(h);
