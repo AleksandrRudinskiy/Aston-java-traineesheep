@@ -1,5 +1,7 @@
 package list;
 
+import java.util.Arrays;
+
 public class HandMadeArrayList<T> {
     private int size = 0;
     private Object[] elements;
@@ -61,6 +63,9 @@ public class HandMadeArrayList<T> {
     }
 
     public void add(int index, Object element) {
+        if (size == elements.length) {
+            grow();
+        }
         if (index > size || index < 0)
             throw new IndexOutOfBoundsException("Элемента с интексом " + index + " нет.");
         System.arraycopy(elements, index, elements, index + 1,
@@ -73,5 +78,12 @@ public class HandMadeArrayList<T> {
         for (int i = 0; i < size; i++)
             elements[i] = null;
         size = 0;
+    }
+
+    @Override
+    public String toString() {
+        return "HandMadeArrayList{" +
+                "elements=" + Arrays.toString(elements) +
+                '}';
     }
 }

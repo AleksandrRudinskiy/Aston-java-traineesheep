@@ -1,13 +1,11 @@
 import list.HandMadeArrayList;
 import model.Employee;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class HandMadeArrayListTest {
-
     @Test
     void addIntTest() {
         HandMadeArrayList<Integer> list = new HandMadeArrayList<>();
@@ -54,12 +52,7 @@ public class HandMadeArrayListTest {
         int index = 5;
         final ArrayIndexOutOfBoundsException exception = assertThrows(
                 ArrayIndexOutOfBoundsException.class,
-                new Executable() {
-                    @Override
-                    public void execute() {
-                        list.get(index);
-                    }
-                });
+                () -> list.get(index));
         assertEquals("Element with index " + index + " does not exist", exception.getMessage());
     }
 
@@ -95,5 +88,38 @@ public class HandMadeArrayListTest {
         list.clear();
         assertEquals(0, list.size());
     }
+
+    @Test
+    void shouldBe20sizeWhenDelete80elements() {
+        HandMadeArrayList<Integer> list = new HandMadeArrayList<>();
+        for (int i = 1; i < 101; i++) {
+            list.add(i);
+        }
+        assertEquals(100, list.size());
+        for (int i = 1; i < 81; i++) {
+            list.remove(i);
+        }
+        assertEquals(20, list.size());
+    }
+
+    @Test
+    void shouldAdd10ElementsByIndex() {
+        HandMadeArrayList<Integer> list = new HandMadeArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            list.add(i, i + 10);
+        }
+        assertEquals(10, list.size());
+        assertEquals(19, list.get(9));
+
+        for (int i = 0; i < 10; i++) {
+            list.add(i, i + 1000);
+        }
+        assertEquals(20, list.size());
+        assertEquals(19, list.get(19));
+        assertEquals(1009, list.get(9));
+
+    }
+
 
 }
